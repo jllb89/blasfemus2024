@@ -1,0 +1,13 @@
+.wrapper-404 {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .longText {
+    white-space: nowrap;
+    font-size: 2rem;
+    padding: 2rem;
+  }
+  
