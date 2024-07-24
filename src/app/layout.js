@@ -203,10 +203,12 @@ export default function RootLayout({ children }) {
   const changeProduct = (index) => {
     gsap.to(column1Ref.current, { opacity: 0, duration: 0.5, ease: 'power2.out' });
     gsap.to(column2Ref.current, { opacity: 0, duration: 0.5, ease: 'power2.out', delay: 0.1 });
-    gsap.to(column3Ref.current, { opacity: 0, duration: 0.5, ease: 'power2.out', delay: 0.2, onComplete: () => {
-      gsap.set([column1Ref.current, column2Ref.current, column3Ref.current], { yPercent: 0 });
-      setCurrentProductIndex(index);
-    }});
+    gsap.to(column3Ref.current, {
+      opacity: 0, duration: 0.5, ease: 'power2.out', delay: 0.2, onComplete: () => {
+        gsap.set([column1Ref.current, column2Ref.current, column3Ref.current], { yPercent: 0 });
+        setCurrentProductIndex(index);
+      }
+    });
   };
 
   const nextProduct = () => {
@@ -225,19 +227,19 @@ export default function RootLayout({ children }) {
         <div className="mainContent">
           <div>
             <Link href="/" className="logo">
-              <Image src="./blasfemus.svg" alt="Logo" width={200} height={50} priority />
+              <Image src="./blasfemus.svg" alt="Logo" className="responsive-logo" width={200} height={50} priority />
             </Link>
           </div>
 
+
           <div className="loadingTextContainer">
             <video autoPlay playsInline muted loop className="backgroundVideo" onLoadedData={() => console.log('Video loaded')}>
-              <source src="./video.mp4" type="video/mp4" onError={(e) => console.log('Video load error:', e)} />
-              Your browser does not support the video tag.
+              <source src="./video.mp4" type="video/mp4" />
             </video>
             <div className="wrapper">
               <div className="copy">
                 <div>
-                  <h1 ref={mainTitleRef} className="mainTitle">Not a mezcal, not a Tequila...</h1>
+                  <h1 ref={mainTitleRef} className="mainTitle">Not a mezcal, <br />not a Tequila...</h1>
                 </div>
                 <div>
                   <h2 ref={mainDescriptionRef} className="mainDescription">We are Blasfemus,<br />an authentic agave spirit from Texas.</h2>
@@ -246,12 +248,13 @@ export default function RootLayout({ children }) {
             </div>
           </div>
 
+
           <div className="sectionTitle">
             <p>
               <span className="thinFont">Our</span> <span className="lightFont">Products</span>
             </p>
           </div>
-          
+
           <div className="productsSection">
             <div className="column" ref={column1Ref}>
               <div className="productInfo">
@@ -328,7 +331,7 @@ export default function RootLayout({ children }) {
               <span className="thinFont">Blasfemus</span> <span className="lightFont">Mixology Lab</span>
             </p>
           </div>
-          
+
           <CocktailsSlider />
 
           <div className="cocktailsTitle">
@@ -354,7 +357,7 @@ export default function RootLayout({ children }) {
               <span className="thinFont">The Heart of</span> <span className="lightFont">Blasfemus</span>
             </p>
           </div>
-          
+
 
           <div className="distilleryPhotos">
             <div className="photoColumn">
